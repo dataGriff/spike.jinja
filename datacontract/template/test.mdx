@@ -1,0 +1,38 @@
+import { DataContract } from 'components/DataContract';
+
+<DataContract
+  id="urn:datacontract:checkout:orders-latest"
+  title="Orders Latest"
+  version="2.0.0"
+  description="Successful customer orders in the webshop."
+  owner="Checkout Team"
+  status="active"
+  contact={{
+    name: "John Doe",
+    url: "https://teams.microsoft.com/l/channel/example/checkout"
+  }}
+  servers={[
+    {
+      type: "s3",
+      environment: "prod",
+      location: "s3://example-bucket/orders-latest",
+      format: "json"
+    }
+  ]}
+  terms={{
+    usage: "Data can be used for analytics and reporting.",
+    limitations: "Not suitable for real-time use cases."
+  }}
+  models={[
+    {
+      name: "orders",
+      description: "One record per order.",
+      type: "table",
+      fields: [
+        { name: "order_id", type: "text", required: true },
+        { name: "order_total", type: "long", required: true }
+      ]
+    }
+  ]}
+  tags={["checkout", "orders"]}
+/>
